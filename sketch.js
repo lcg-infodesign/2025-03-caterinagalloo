@@ -32,16 +32,16 @@ function draw() {
 
   // Titolo in alto a destra
   fill(255);
-  textAlign(RIGHT, TOP);
+  textAlign(LEFT, TOP);
   textSize(36);
   textStyle(BOLD);
-  text("Vulcani del mondo", width - 20, 20);
+  text("Vulcani del mondo", 20, 20);
   textStyle(NORMAL);
   textSize(16);
   fill(200);
-  text("Il colore è definito dalla legenda, la dimensione dall'altitudine", width - 20, 60);
+  text("Il colore è definito dalla legenda, la dimensione dall'altitudine", 20, 60);
 
-  // Disegno punti (mappa più in basso)
+  // Disegno triangoli 
   let mapTopPadding = 100; 
   for (let i = 0; i < volcanoes.length; i++) {
     let r = volcanoes[i];
@@ -62,13 +62,13 @@ function draw() {
 
     if (dist(mouseX, mouseY, x, y) < size) hoveredRow = r;
   }
-
+  
+  drawLegend();
   // Tooltip
   if (hoveredRow !== -1) {
     showTooltip(hoveredRow);
   }
 
-  drawLegend();
 }
 
 function drawTriangle(x, y, s) {
@@ -108,12 +108,12 @@ function getColorByStatus(status) {
 
 function drawLegend() {
   push();
-  // Legenda in alto a sinistra
-  let x0 = 20;
-  let y0 = 20;
+  // Legenda in alto a destra
   let w = 180;
-  let h = 140;
-  let padding = 12;
+let h = 140;
+let padding = 12;
+let x0 = width - w - 20;
+let y0 = 20;
 
   fill(25, 20, 60, 200);
   stroke(255, 40);
